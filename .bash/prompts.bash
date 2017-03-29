@@ -223,7 +223,7 @@ YELLOW_GREEN=$(tput setaf $(fromhex "#9ACD32"))
 #-------------------------------------------------------------------------------
 
 function nice() {
-  stamp="$(date '+%l:%M:%S%p')"
+  stamp="$(date '+%H:%M:%S%p')"
   echo -e ${stamp%?} | awk '{print tolower($0)}'
 }
 
@@ -287,12 +287,12 @@ fi
 #-------------------------------------------------------------------------------
 
 env="\$(pyenviron)\[$RESET\]"
-user="\[$DEEP_PINK\]\u"
+user="\[$STEEL_BLUE\]\u"
 at="\[$REBECCA_PURPLE\]@"
-host="\[$DODGER_BLUE\]\h"
+host="\[$STEEL_BLUE\]\h"
 colon="\[$TURQUOISE\]:"
 path="\[$TOMATO\]\$(trunk)\[$RESET\]"
-dt="\[$YELLOW_GREEN\]\$(nice)"
+dt="\[$TURQUOISE\]\$(nice)"
 eol="\[$STEEL_BLUE\]¬\n"
 char="\$(emoji)"
 top="\[$STEEL_BLUE\]\n┌─"
@@ -314,4 +314,4 @@ prompt="\[$YELLOW\]$\[$RESET\]" # https://github.com/mhulse/dotfizzles/issues/79
 export PS1=""
 export PS2="\[$ORANGE\]➜ \[$RESET\]"
 
-export PROMPT_COMMAND='__git_ps1 "${top}${user}${at}${host}${colon}${path}${env}" " ${dt}${eol}${bottom}${char} ${prompt} "'
+export PROMPT_COMMAND='__git_ps1 "${dt} ${user}${at}${host}${colon}${path}${env}" " ${prompt} "'

@@ -11,7 +11,7 @@ My personal dot file setup bash stuffs; use at your own risk. <img width="20" he
 From the command line, run:
 
 ```bash
-bash <(curl -sL https://git.io/v2A8D)
+bash <(curl -sL https://git.io/vSsE0)
 ```
 
 … and restart your terminal app.

@@ -17,7 +17,6 @@ function install() {
 	if (($1)); then
 		#zip -r archive_name.zip noexist.foo > /dev/null 2>&1
 		zip -r "dotfizzles.$now.zip" \
-		       ".virtualenvs" \
 		       ".bash_profile" \
 		       ".bash" \
 		       ".bashrc" \
@@ -26,26 +25,30 @@ function install() {
 		       ".gitconfig" \
 		       ".gitignore" \
 		       ".hushlogin" \
+                       ".i3" \
+                       ".i3status.conf" \
 		       ".inputrc" \
 		       ".mkshrc" \
+		       "mm.cfg" \
 		       ".npmrc" \
 		       ".profile" \
 		       ".scripts" \
-		       ".zshrc" \
-		       "mm.cfg" \
+                       ".vimrc" \
+		       ".virtualenvs" \
+		       #".zshrc" \
 		       > /dev/null 2>&1
 		
 	fi
 	
 	# Get the zip file and extract all files:
-	curl -sS -#L https://github.com/mhulse/dotfizzles/tarball/master | tar -xzv --strip-components 1 --exclude={install.sh,README.md}
+	curl -sS -#L https://github.com/MaraJade/dotfizzles/tarball/master | tar -xzv --strip-components 1 --exclude={install.sh,README.md}
 	
 	# Let the use know that we are done:
 	echo $'\n'"--------------------------------------------------------------"
 	echo "Congrats! Installation was successful!"
 	echo "Run \"source ~/.bash_profile\" to reload your session."
 	echo "Optimally, it’s probably a good idea to restart your computer."
-	echo -e "\e[4mhttps://github.com/mhulse/dotfizzles\e[24m"
+	echo -e "\e[4mhttps://github.com/MaraJade/dotfizzles\e[24m"
 	
 	exit 0
 	
@@ -77,4 +80,4 @@ choose
 
 # Done!
 # For more information about this script, see:
-# https://github.com/mhulse/dotfizzles
+# https://github.com/MaraJade/dotfizzles

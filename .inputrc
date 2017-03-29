@@ -42,14 +42,14 @@ set convert-meta off
 # Ex.: type "doc<tab>" to search for "Documents"
 set completion-ignore-case on
 
-set expand-tilde on
+#set expand-tilde on
 set show-all-if-ambiguous on
 set visible-stats on
-set -o nano
+set -o vim 
 
 # Bind the Tab key to cycle completions one at a time instead of listing them all
 # and requiring you to type characters until there’s only one match.
-TAB: menu-complete
+#TAB: menu-complete
 
 # Binding Shift-Tab to go backward:
 "\e[Z": "\e-1\C-i"

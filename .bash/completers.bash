@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Autocomplete for Homebrew:
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#  . $(brew --prefix)/etc/bash_completion
+#fi
 
 # Autocomplete for Node:
 if [[ -e ~/.node-completion ]]; then
@@ -25,6 +25,21 @@ if [[ `which pip` ]]; then
 fi
 
 # Autocomplete for Grunt:
-if [[ `which grunt` ]]; then
-  eval "$(grunt --completion=bash)"
+#if [[ `which grunt` ]]; then
+#  eval "$(grunt --completion=bash)"
+#fi
+
+# Bash autocomplete
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
+
+# Git autocomplete
+source ~/.scripts/.git-completion.bash
+
+# Default bash completion
+bind '"\C-i":complete'

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Color ls:
-colorflag="-G"
-alias ls="command ls ${colorflag}h"
+colorflag="--color"
+alias ls="command ls -h ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
-alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+alias la="ls -a ${colorflag}" # all files inc dotfiles, in long format
 alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 alias ll="ls -alFh ${colorflag}"
 
@@ -82,23 +82,19 @@ alias showBlocked="sudo ipfw list"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete && find . -name 'Thumbs.db' -type f -ls -delete"
 
 # Weather from my current location:
-alias weather="curl -s 'http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=en|us|brooklyn-ny|11215' | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'"
+alias weather="curl -s 'http://rss.accuweather.com/rss/liveweather_rss.asp?imperial=1&locCode=en|us|springdfield-or|97477' | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'"
+alias weatherc="curl -s 'http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=en|us|springdfield-or|97477' | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'"
 
 alias tolowercase="pbpaste | tr "[:upper:]" "[:lower:]" | pbcopy"
 alias touppercase="pbpaste | tr "[:lower:]" "[:upper:]" | pbcopy"
 
 # Only show dot files:
-alias lsh="ls -ld .??*"
+alias lsh="ls -ad .??*"
 
 alias restartdock="killall -KILL Dock"
 
 # Opens up the IOS Simulator without launching xcode:
 alias iossimulator="(cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/ && open -a iPhone\ Simulator.app)"
-
-# Show hidden files in Finder:
-alias show="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
-# Hide hidden files in Finder:
-alias hide="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
 
 # Default Python:
 alias python=python3
@@ -121,16 +117,23 @@ alias tomcat=catalina
 # List Atom packages:
 alias atompkgs="apm list --installed --bare"
 
-# Start blender from command line, used for debugging:
-alias blender="/Applications/blender.app/Contents/MacOS/blender"
-
 # Quick Look!
 # $ cd /Library/Desktop\ Pictures
 # $ qlf "Jaguar Aqua Graphite.jpg"
 alias qlf='qlmanage -p "$@" >& /dev/null'
 
-# Remove Duplicates from the “Open With” Right-Click Menu in Mac OS X:
-alias killdups='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
-
 # Open current directory in Finder.app and Atom.app:
 alias go="open . && atom ."
+
+# Common ssh commands
+alias onid="ssh goossenm@shell.onid.oregonstate.edu"
+alias flip="ssh goossenm@flip1.engr.oregonstate.edu"
+alias s2="ssh -p 6345 root@10.1.10.109"
+alias s7="ssh -p 6345 root@ieqs7.ieqtechnology.com"
+alias stonewall="ssh marajade@fractal.stonewalljones.us -p 56322"
+
+# Fuck
+eval "$(thefuck --alias fuck)"
+
+# Vim in bash
+alias :q="exec <&-"

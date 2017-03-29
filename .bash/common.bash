@@ -5,7 +5,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Default editor:
-export EDITOR=nano
+export EDITOR=vim
 
 # Required scripts:
 [[ -d "$HOME/.scripts" ]] && export PATH=$HOME/.scripts:$PATH
@@ -31,12 +31,12 @@ fi
 # You may need to run:
 # $ java --request
 # and click “More Info…” to visit the Java Developer Kit download website.
-export JRE_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home)
+#export JRE_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Apache Tomcat
 # http://tomcat.apache.org/
-export CATALINA_HOME='/Applications/tomcat' # Symlinked to latest Tomcat version.
+#export CATALINA_HOME='/Applications/tomcat' # Symlinked to latest Tomcat version.
 
 # Check the window size after each command and, if necessary, update the
 # values of LINES and COLUMNS:
@@ -44,3 +44,10 @@ shopt -s checkwinsize
 
 # Turn on recursive globbing (bash 4.x):
 shopt -s globstar
+
+# Auto add ssh keys
+keychain id_rsa_bitbucket id_rsa_github id_rsa
+. ~/.keychain/`uname -n`-sh
+
+# Put tldr in path
+export PATH=~/bin:$PATH
